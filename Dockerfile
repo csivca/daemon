@@ -15,6 +15,7 @@ RUN apk add --no-cache openssl make gcc g++ python linux-headers paxctl gnupg ta
  && chmod +x /srv/daemon/sftp-server \
  && chmod +x /srv/daemon/.docker/entrypoint.sh \
  && cp /srv/daemon/.docker/supervisord.conf /etc/supervisord.conf
+RUN apk add tzdata && cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 EXPOSE 8080
 
