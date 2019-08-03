@@ -16,6 +16,10 @@ RUN apk add --no-cache openssl make gcc g++ python linux-headers paxctl gnupg ta
  && chmod +x /srv/daemon/.docker/entrypoint.sh \
  && cp /srv/daemon/.docker/supervisord.conf /etc/supervisord.conf
 
+RUN apk add tzdata
+RUN ls /usr/share/zoneinfo
+RUN cp /usr/share/zoneinfo/Europe/Sarajevo /etc/localtime
+
 EXPOSE 8080
 
 ENTRYPOINT [ "/bin/ash", "/srv/daemon/.docker/entrypoint.sh" ]
